@@ -14,17 +14,12 @@ This is a student management system implemented in C++ that provides functionali
 
 ## How to Use
 
-1. Compile the program:
+1. Run the program:
     ```bash
-    g++ -o student_management student_management.cpp
+    PLEASE RUN THE ONLY .EXE FILE
     ```
 
-2. Run the program:
-    ```bash
-    ./student_management
-    ```
-
-3. The following options will be available:
+2. The following options will be available:
 
     - **Add new student to the list**: Enter student details like code, full name, date of birth, and average grade.
     - **Display all students**: View a list of all students in the system.
@@ -33,7 +28,7 @@ This is a student management system implemented in C++ that provides functionali
     - **Display student with the lowest average grade**: View the student(s) with the lowest grade.
     - **Exit**: Exit the application.
 
-4. Student data will be saved in the file `danhsachsinhvien.txt`, ensuring data persistence.
+3. Student data will be saved in the file `danhsachsinhvien.txt`, ensuring data persistence.
 
 ## File Format
 
@@ -45,7 +40,7 @@ The file `danhsachsinhvien.txt` stores the student information in the following 
     - Full Name
     - Date of Birth (dd/mm/yyyy)
     - Average Grade
-
+- Do not change the `danhsachsinhvien.txt` file
 ## Code Explanation
 
 1. **Standardization of Input**: The system ensures that the name is capitalized properly and that the date format is consistent (dd/mm/yyyy).
@@ -54,12 +49,20 @@ The file `danhsachsinhvien.txt` stores the student information in the following 
 
 ## License
 
-This project is open-source and available under the MIT License.
+Just build it my self
 
 ## Acknowledgments
 
 - The system is built using C++ Standard Library (STL) and basic file handling.
 - Special thanks to the creators of C++ documentation and tutorials.
+
+## For Examiner 
+
+- Thank you, teacher, for reviewing my code. I have added detailed notes for each function, method, and feature in the code. I hope you can provide feedback and help improve my code so that I can perform better in the future.
+- 24110215
+- Lương Chí Dũng 
+
+*This README.md is written with the support of AI assistance.
 
 
 
