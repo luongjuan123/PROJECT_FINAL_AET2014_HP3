@@ -148,9 +148,8 @@ class Student {
         }
 
         // Hàm display để hiển thị thông tin sinh viên
-        // const ở đây đảm bảo rằng phương thức này không thay đổi dữ liệu của đối tượng
-        void display() const {
-            // In thông tin sinh viên với định dạng đẹp mắt
+        void display(){
+            // In thông tin sinh viên 
             cout << "-------------------------------------" << endl;
             cout << "Student Code    : " << S_code << endl;
             cout << "Full Name       : " << Full_name << endl;
