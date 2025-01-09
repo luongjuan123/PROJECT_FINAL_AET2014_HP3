@@ -62,8 +62,8 @@ Just build it my self
 - 24110215
 - Lương Chí Dũng 
 
-*This README.md is written with the support of AI assistance.
-*THIS PROGRAM CAN NOT RUN WITH A LIST OF 100000 Students or above because i use liner search for searching(to lazy to overload operators, may be i'll do it apply binary_search or sonthing faster on this program but i think there won't be any school that have more than 10000 studens : DDDDD)
+*This README.md is written with the support of AI assistance.*
+*THIS PROGRAM CAN NOT RUN WITH A LIST OF 100000 Students or above because i use liner search for searching(to lazy to overload operators, may be i'll do it to apply binary_search or something faster on this program but i think there won't be any school that have more than 10000 studens : DDDDD)*
 
 
 
