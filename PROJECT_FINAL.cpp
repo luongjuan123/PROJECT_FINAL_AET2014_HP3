@@ -127,47 +127,23 @@ class Student {
         }
 
         // Hàm GET để truy xuất thông tin các thuộc tính của đối tượng
-        string Get_S_code(){
-            return this->S_code;
-        }
-
-        string Get_Full_name(){
-            return this->Full_name;
-        }
-
-        string Get_date(){
-            return this->date;
-        }
-
-        double Get_avg_grade(){
-            return this->avg_grade;
-        }
+        string Get_S_code() { return this->S_code; }
+        string Get_Full_name() { return this->Full_name; }
+        string Get_date() { return this->date; }
+        double Get_avg_grade() { return this->avg_grade; }
 
         // Hàm SET để cập nhật các thuộc tính của đối tượng
-        void SetS_code(string S_code){
-            this->S_code = S_code;
-        }
-
-        void SetFull_name(string Full_name){
-            this->Full_name = Full_name;
-        }
-
-        void Setdate(string date){
-            this->date = date;
-        }
-
-        void Setavg_grade(double avg_grade){
-            this->avg_grade = avg_grade;
-        }
+        void SetS_code(string S_code) { this->S_code = S_code; }
+        void SetFull_name(string Full_name{ this->Full_name = Full_name; }
+        void Setdate(string date) { this->date = date; }
+        void Setavg_grade(double avg_grade) { this->avg_grade = avg_grade; }
 
         // Hàm display để hiển thị thông tin sinh viên
-        void display(){
-            // In thông tin sinh viên 
+        void display(){ 
             cout << "-------------------------------------" << endl;
             cout << "Student Code    : " << S_code << endl;
             cout << "Full Name       : " << Full_name << endl;
             cout << "Date of Birth   : " << date << endl;
-            // Dùng setprecision để hiển thị điểm với 2 chữ số thập phân
             cout << "Average Grade   : " << fixed << setprecision(2) << avg_grade << endl;
             cout << "-------------------------------------" << endl;
         }
@@ -182,22 +158,22 @@ class Student {
 void Display_list(list<Student> LS){
     // Kiểm tra nếu danh sách LS trống (không có sinh viên)
     if(LS.size() == 0){
-        cout <<"The current list does not contain any students !!!!\n";  // In ra thông báo nếu danh sách không có sinh viên
+        cout <<"The current list does not contain any students !!!!\n";  
     }
     else{
-        // Kiểm tra nếu danh sách chỉ chứa 1 sinh viên
+        // Nếu danh sách chỉ chứa 1 sinh viên
         if(LS.size() == 1){
-            cout <<" The current list contains 1 student.\n";  // In ra thông báo nếu danh sách có 1 sinh viên
+            cout <<" The current list contains 1 student.\n";  
         }
         else{
             // Nếu danh sách chứa nhiều sinh viên
-            cout <<" The current list contains "<< LS.size() <<" students.\n";  // In ra thông báo với số lượng sinh viên trong danh sách
+            cout <<" The current list contains "<< LS.size() <<" students.\n";  
         }
     }
 
     // Duyệt qua tất cả các sinh viên trong danh sách LS và hiển thị thông tin của từng sinh viên
     for(list<Student>::iterator it = LS.begin(); it != LS.end(); it++){
-        (*it).display();  // Gọi hàm display() của đối tượng Student để hiển thị thông tin chi tiết của từng sinh viên
+        (*it).display();  
     }
 }
 
@@ -205,13 +181,13 @@ void Display_list(list<Student> LS){
 // Hàm Display_highest_grade:
 // Hàm này hiển thị thông tin về các sinh viên có điểm trung bình cao nhất trong danh sách.
 void Display_highest_grade(list<Student> LS){
-    // Khởi tạo danh sách HLS để lưu các sinh viên có điểm trung bình cao nhất
+    
     list<Student> HLS;
     cout << "List of students with the highest average score : \n";
-    // Khởi tạo biến Tmp_grade với giá trị điểm thấp nhất (-1.0) để so sánh
+    
     double Tmp_grade = -1.0;
 
-    // Duyệt qua toàn bộ danh sách LS để tìm điểm trung bình cao nhất
+    
     for(list<Student>::iterator it = LS.begin(); it != LS.end(); it++){
         double grade = (*it).Get_avg_grade();  
         if(grade > Tmp_grade){  
@@ -219,7 +195,7 @@ void Display_highest_grade(list<Student> LS){
         }
     }
 
-    // Duyệt lại toàn bộ danh sách LS để tìm tất cả sinh viên có điểm trung bình bằng với điểm cao nhất
+    // Duyệt lại 
     for(list<Student>::iterator it = LS.begin(); it != LS.end(); it++){
         double grade = (*it).Get_avg_grade();  
         if(grade == Tmp_grade){  
@@ -227,7 +203,7 @@ void Display_highest_grade(list<Student> LS){
         }
     }
 
-    // Gọi hàm Display_list để hiển thị tất cả sinh viên có điểm trung bình cao nhất
+    
     Display_list(HLS);  
 }
 
@@ -235,13 +211,13 @@ void Display_highest_grade(list<Student> LS){
 // Hàm Display_lowest_grade:
 // Hàm này hiển thị thông tin về các sinh viên có điểm trung bình thấp nhất trong danh sách.
 void Display_lowest_grade(list<Student> LS){
-    // Khởi tạo danh sách LLS để lưu các sinh viên có điểm trung bình thấp nhất
+    
     list<Student> LLS;
     cout << " List of students with the lowest average score : \n";
-    // Khởi tạo biến Tmp_grade với giá trị điểm cao nhất (1e9) để so sánh
+    
     double Tmp_grade = 1e9;
 
-    // Duyệt qua toàn bộ danh sách LS để tìm điểm trung bình thấp nhất
+    
     for(list<Student>::iterator it = LS.begin(); it != LS.end(); it++){
         double grade = (*it).Get_avg_grade();  
         if(grade < Tmp_grade){  
@@ -249,7 +225,7 @@ void Display_lowest_grade(list<Student> LS){
         }
     }
 
-    // Duyệt lại toàn bộ danh sách LS để tìm tất cả sinh viên có điểm trung bình bằng với điểm thấp nhất
+    // Duyệt lại 
     for(list<Student>::iterator it = LS.begin(); it != LS.end(); it++){
         double grade = (*it).Get_avg_grade(); 
         if(grade == Tmp_grade){   
@@ -257,7 +233,7 @@ void Display_lowest_grade(list<Student> LS){
         }
     }
 
-    // Gọi hàm Display_list để hiển thị tất cả sinh viên có điểm trung bình thấp nhất
+   
     Display_list(LLS);  
 }
 
@@ -274,8 +250,8 @@ Student Code_search(string S_code, list<Student> LS){
             return *it;  // Trả về sinh viên tìm được
         }
     }
-    // Nếu không tìm thấy sinh viên, trả về sinh viên có thông tin "Null"
-    return Student("Null", "Null", "Null", -1.0);  
+    
+    return Student("Null", "Null", "Null", -1.0);  // Không tìm thấy
 }
 
 // Hàm Add_Student:
@@ -367,36 +343,36 @@ void ShowSearchResult(list<Student> LS){
         return;  
     }
 
-    // Nhập mã số sinh viên từ người dùng
+    
     string S_code;
     cout << "Enter your student code : ";
     cin.ignore();
     getline(cin, S_code);
 
-    // Tìm kiếm sinh viên với mã số nhập vào
+    
     Student S = Code_search(S_code, LS);
 
-    // Kiểm tra nếu sinh viên không được tìm thấy
-    if(S.Get_S_code() == "Null"){  // Nếu mã sinh viên là "Null", không tìm thấy sinh viên
+    
+    if(S.Get_S_code() == "Null"){  
         cout << "Student with the entered student code not found, please CHECK your Student code and try again !!!\n";
     }
     else{
         cout << "Student with student code " <<  S_code << " found :\n";
-        S.display();  // Gọi hàm display() của lớp Student để hiển thị thông tin sinh viên
+        S.display(); 
     }
 }
 
 void Application_close(list<Student> LS){
-    // Mở file "danhsach.txt" để ghi lại dữ liệu
+
     ofstream out;
-    out.open("danhsachsinhvien.txt", ios::trunc);  // Mở file với chế độ 'trunc' để xóa dữ liệu cũ và ghi lại từ đầu
+    out.open("danhsachsinhvien.txt", ios::trunc);  // Ghi lại từ đầu
 
     
     if (out.is_open()) {
-        // Ghi kích thước danh sách vào file (số lượng sinh viên)
+        
         out << LS.size() << endl;
 
-        // Duyệt qua danh sách sinh viên và ghi từng thông tin của mỗi sinh viên vào file
+        // Duyệt danh sách sinh viên và lưu
         for (list<Student>::iterator it = LS.begin(); it != LS.end(); it++) {
             out << (*it).Get_S_code() << endl;        
             out << (*it).Get_Full_name() << endl;    
@@ -412,13 +388,13 @@ void Application_close(list<Student> LS){
 }
 
 void Start_application(list<Student> &LS){
-    // Mở file "danhsachsinhvien.txt" để đọc dữ liệu
+    
     ifstream in;
     in.open("danhsachsinhvien.txt");
 
-    // Kiểm tra nếu file mở thành công
+    
     if (in.is_open()) {
-        int LSsize;  // Biến lưu trữ số lượng sinh viên trong file
+        int LSsize;  
 
         
         in >> LSsize;
@@ -450,15 +426,15 @@ void Start_application(list<Student> &LS){
 int main() {
     list<Student> LS; 
 
-    // Khai báo danh sách sinh viên LS
+    // Nạp dữ liệu
     Start_application(LS);
 
     cout << LS.size() << endl;
      
-    int choice;  // Biến để lưu lựa chọn của người dùng
+    int choice;  
 
     do {
-        // In ra menu các lựa chọn cho người dùng
+        // MENU
         cout << "======= STUDENT MANAGEMENT MENU =======\n";
         cout << "1. Add new student to the list\n";  // Thêm sinh viên mới vào danh sách
         cout << "2. Display all students\n";       // Hiển thị tất cả sinh viên trong danh sách
@@ -472,7 +448,7 @@ int main() {
         cout << "Enter your choice (0-5): ";
         cin >> choice;
 
-        // Kiểm tra lựa chọn và gọi các hàm tương ứng
+        // CHOICE
         switch (choice) {
             case 1:
                 cout << "You selected: Add new student to the list\n\n";
@@ -500,8 +476,8 @@ int main() {
                 break;
 
             case 0:
-                cout << "Exiting the program...\n\n";  // Thoát chương trình
-                Application_close(LS);
+                cout << "Exiting the program...\n\n";  
+                Application_close(LS);//Lưu dữ liệu
                 break;
 
             // Nếu người dùng nhập lựa chọn không hợp lệ
@@ -510,8 +486,8 @@ int main() {
         }
 
         cout << endl;
-    } while (choice != 0);  // Lặp lại cho đến khi người dùng chọn thoát (0)
+    } while (choice != 0);  
 
-    return 0;  // Kết thúc chương trình
+    return 0;  
 }
 
