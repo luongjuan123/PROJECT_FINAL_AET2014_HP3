@@ -476,7 +476,7 @@ int main() {
                 break;
 
             case 0:
-                cout << "Exiting the program...\n\n";  
+                cout << "Exiting the program...\n\n";  // Thoát chương trình
                 Application_close(LS);//Lưu dữ liệu
                 break;
 
