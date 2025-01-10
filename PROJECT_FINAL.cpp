@@ -43,11 +43,11 @@ bool isValidDate(string date) {
     string day, mon, year;
     day = date.substr(0, 2);
     mon = date.substr(3, 2);
-    year = date.substr(6, 4);  // Sửa lại chỉ số bắt đầu lấy năm
+    year = date.substr(6, 4);  
 
     int d = stoi(day), m = stoi(mon), y = stoi(year);
 
-    // Kiểm tra các giá trị cơ bản (tháng, ngày, năm)
+    
     if (m > 12 || m < 1 || d > 31 || d < 1 || y < 1850 || y > 2025) {
         return false;
     }
@@ -55,23 +55,16 @@ bool isValidDate(string date) {
     // Kiểm tra tháng 2
     if (m == 2) {
         if (d > 29) {
-            return false; // Tháng 2 không thể có hơn 29 ngày
+            return false; 
         }
         if (d == 29 && !isLeapYear(year)) {
             return false; // Nếu không phải năm nhuận thì tháng 2 không thể có 29 ngày
         }
     }
 
-    // Kiểm tra các tháng có 30 ngày (4, 6, 9, 11)
+    
     if (m == 4 || m == 6 || m == 9 || m == 11) {
         if (d > 30) {
-            return false; // Các tháng này không thể có 31 ngày
-        }
-    }
-
-    // Kiểm tra các tháng có 31 ngày (1, 3, 5, 7, 8, 10, 12)
-    if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {
-        if (d > 31) {
             return false; 
         }
     }
