@@ -422,7 +422,7 @@ int main() {
     // Nạp dữ liệu
     Start_application(LS);
 
-    cout << LS.size() << endl;
+    //cout << LS.size() << endl;
      
     int choice;  
 
@@ -469,11 +469,11 @@ int main() {
                 break;
 
             case 0:
-                cout << "Exiting the program...\n\n";  // Thoát chương trình
+                cout << "Exiting the program...\n\n";  
                 Application_close(LS);//Lưu dữ liệu
                 break;
 
-            // Nếu người dùng nhập lựa chọn không hợp lệ
+            
             default:
                 cout << "Invalid choice! Please try again.\n";
         }
