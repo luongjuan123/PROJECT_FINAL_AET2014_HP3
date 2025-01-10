@@ -420,10 +420,10 @@ void Start_application(list<Student> &LS){
 int main() {
     list<Student> LS; 
 
-    // Khai báo danh sách sinh viên LS
+    // Nạp dữ liệu
     Start_application(LS);
 
-    cout << LS.size() << endl;
+    //cout << LS.size() << endl;
      
     int choice;  // Biến để lưu lựa chọn của người dùng
 
@@ -471,7 +471,7 @@ int main() {
 
             case 0:
                 cout << "Exiting the program...\n\n";  // Thoát chương trình
-                Application_close(LS);
+                Application_close(LS); // Lưu dữ liệu
                 break;
 
             // Nếu người dùng nhập lựa chọn không hợp lệ
