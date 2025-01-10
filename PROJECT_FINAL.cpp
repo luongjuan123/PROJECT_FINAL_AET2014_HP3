@@ -260,11 +260,16 @@ void Add_Student(list<Student> &LS){
     double avg_grade;
 
     cout << "======= ENTER YOUR INFORMATION  =======\n";
+    cout << "Note: Enter 'q' or 'exit' at any time to cancel adding a student.\n";
 
     // Nhập mssv
     while (true) {
         cout << "Student code (8 digits, follow the standard of VNU student code): ";
         getline(cin, S_code);
+        if (S_code == "q" || S_code == "exit") {
+            cout << "Cancelling the add student process.\n";
+            return;
+        }
         // Kiểm tra tính hợp lệ của mã số sinh viên
         if(Code_search(S_code, LS).Get_S_code() == "Null" ){
             if (isValidStudentCode(S_code)) {
@@ -285,6 +290,10 @@ void Add_Student(list<Student> &LS){
     while(true){
         cout << "Full Name       : ";
         getline(cin, Full_name);
+        if (Full_name == "q" || Full_name == "exit") {
+            cout << "Cancelling the add student process.\n";
+            return;
+        }
         standardize_Name(Full_name);  // Chuẩn hóa tên 
         if(isValidName(Full_name)){
             break;
@@ -298,6 +307,10 @@ void Add_Student(list<Student> &LS){
     while (true) {
         cout << "Date of Birth (dd/mm/yyyy) : ";
         getline(cin, date);
+        if (date == "q" || date == "exit") {
+            cout << "Cancelling the add student process.\n";
+            return;
+        }
         standardize_Date(date);  // Chuẩn hóa ngày 
        
         if (isValidDate(date)) {
@@ -322,7 +335,7 @@ void Add_Student(list<Student> &LS){
     
     Student S_tmp = Student(S_code, Full_name, date, avg_grade);
     LS.push_back(S_tmp);
-      
+    cout << "Student added successfully!\n";
 }
 
 // Hàm ShowSearchResult:
@@ -339,9 +352,13 @@ void ShowSearchResult(list<Student> LS){
     
     string S_code;
     cout << "Enter your student code : ";
+    cout << "Note: Enter 'q' or 'exit' at any time to cancel adding a student.\n";
     cin.ignore();
     getline(cin, S_code);
-
+    if (S_code == "q" || S_code == "exit") {
+        cout << "Cancelling the add student process.\n";
+        return;
+    }
     
     Student S = Code_search(S_code, LS);
 
