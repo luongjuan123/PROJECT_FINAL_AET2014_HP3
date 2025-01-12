@@ -28,6 +28,22 @@ void standardize_Date(string &date){
     }
 }
 
+bool isDouble(const std::string& s) {
+    std::stringstream ss(s);
+    double value;
+    char extra;
+
+    if (!(ss >> value)) {
+        return false;  
+    }
+    
+    if (ss >> extra) {
+        return false;  
+    }
+
+    return true; 
+}
+
 bool isLeapYear(string year) {
     int yearInt = stoi(year);
 
@@ -40,13 +56,16 @@ bool isLeapYear(string year) {
 
 
 bool isValidDate(string date) {
+    if(!isdigit(date[0]) || !isdigit(date[1]) || !isdigit(date[3]) || !isdigit(date[4]) || !isdigit(date[6]) || !isdigit(date[7]) || !isdigit(date[8]) || !isdigit(date[9]) || date[2] != '/' || date[5] != '/' || date.length() != 10 ){
+        return false;
+    }
+
     string day, mon, year;
     day = date.substr(0, 2);
     mon = date.substr(3, 2);
     year = date.substr(6, 4);  
 
     int d = stoi(day), m = stoi(mon), y = stoi(year);
-
     
     if (m > 12 || m < 1 || d > 31 || d < 1 || y < 1850 || y > 2025) {
         return false;
@@ -119,19 +138,19 @@ class Student {
             this->avg_grade = avg_grade;
         }
 
-        // Hàm GET để truy xuất thông tin các thuộc tính của đối tượng
+        // Hàm GET 
         string Get_S_code() { return this->S_code; }
         string Get_Full_name() { return this->Full_name; }
         string Get_date() { return this->date; }
         double Get_avg_grade() { return this->avg_grade; }
 
-        // Hàm SET để cập nhật các thuộc tính của đối tượng
+        // Hàm SET 
         void SetS_code(string S_code) { this->S_code = S_code; }
         void SetFull_name(string Full_name) { this->Full_name = Full_name; }
         void Setdate(string date) { this->date = date; }
         void Setavg_grade(double avg_grade) { this->avg_grade = avg_grade; }
 
-        // Hàm display để hiển thị thông tin sinh viên
+        // Hàm display 
         void display(){ 
             cout << "-------------------------------------" << endl;
             cout << "Student Code    : " << S_code << endl;
@@ -149,22 +168,19 @@ class Student {
 // Hàm Display_list:
 // Hàm này hiển thị thông tin về danh sách sinh viên hiện tại và các thông tin của từng sinh viên trong danh sách.
 void Display_list(list<Student> LS){
-    // Kiểm tra nếu danh sách LS trống (không có sinh viên)
     if(LS.size() == 0){
         cout <<"The current list does not contain any students !!!!\n";  
     }
     else{
-        // Nếu danh sách chỉ chứa 1 sinh viên
         if(LS.size() == 1){
             cout <<" The current list contains 1 student.\n";  
         }
         else{
-            // Nếu danh sách chứa nhiều sinh viên
             cout <<" The current list contains "<< LS.size() <<" students.\n";  
         }
     }
 
-    // Duyệt qua tất cả các sinh viên trong danh sách LS và hiển thị thông tin của từng sinh viên
+    
     for(list<Student>::iterator it = LS.begin(); it != LS.end(); it++){
         (*it).display();  
     }
@@ -324,7 +340,6 @@ void Add_Student(list<Student> &LS){
     while (true) {
         cout << "Average Grade (0-10) : ";
         cin >> avg_grade;
-        
         if (avg_grade >= 0 && avg_grade <= 10) {
             break; 
         } else {
