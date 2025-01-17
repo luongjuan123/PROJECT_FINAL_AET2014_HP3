@@ -28,21 +28,6 @@ void standardize_Date(string &date){
     }
 }
 
-bool isDouble(const std::string& s) {
-    std::stringstream ss(s);
-    double value;
-    char extra;
-
-    if (!(ss >> value)) {
-        return false;  
-    }
-    
-    if (ss >> extra) {
-        return false;  
-    }
-
-    return true; 
-}
 
 bool isLeapYear(string year) {
     int yearInt = stoi(year);
