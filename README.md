@@ -15,9 +15,9 @@ This is a student management system implemented in C++ that provides functionali
 ## How to Use
 
 1. Run the program:
-    ```bash
-    PLEASE RUN THE ONLY .EXE FILE
-    ```
+    
+    - PLEASE RUN THE ONLY .EXE FILE
+
 
 2. The following options will be available:
 
