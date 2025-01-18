@@ -4,14 +4,36 @@ using ll = long long;
 const ll MOD = 1e9 + 7;
 
 
+double strToDouble(string s){
+    int n = s.size();
+    int i = 0;
+    string int_part = "" , double_part = "";
+    double res = 0.0;
+    while (s[i] != '.' && s[i] != ',' && i <= n - 1) {
+        int_part += s[i];
+        i ++;
+    }
+    i ++;
+    while (i <= n - 1) {
+        double_part += s[i];
+        i ++;
+    }
+    res += 1.0 * stoi(int_part);
+    double tmp = 0.0;
+    int p = double_part.size();
+    tmp += 1.0 * stoi(double_part) * pow(10, -1 * p);
+    res += tmp;
+    return res;
+}
+
 void standardize_Name(string &name){
     stringstream ss(name);
     string tmp;
     string res ="";
-    while(ss >> tmp){
+    while (ss >> tmp) {
         tmp[0] = toupper(tmp[0]);
         int n = tmp.size();
-        for(int i = 1; i < n; i ++){
+        for (int i = 1; i < n; i ++) {
             tmp[i] = tolower(tmp[i]);
         }
         res += tmp +" ";
@@ -20,10 +42,10 @@ void standardize_Name(string &name){
 }
 
 void standardize_Date(string &date){
-    if(date[1] == '/'){
+    if (date[1] == '/') {
         date = "0" + date;
     }
-    if(date[4] == '/'){
+    if (date[4] == '/') {
         date.insert(3, "0");
     }
 }
@@ -41,7 +63,7 @@ bool isLeapYear(string year) {
 
 
 bool isValidDate(string date) {
-    if(!isdigit(date[0]) || !isdigit(date[1]) || !isdigit(date[3]) || !isdigit(date[4]) || !isdigit(date[6]) || !isdigit(date[7]) || !isdigit(date[8]) || !isdigit(date[9]) || date[2] != '/' || date[5] != '/' || date.length() != 10 ){
+    if (!isdigit(date[0]) || !isdigit(date[1]) || !isdigit(date[3]) || !isdigit(date[4]) || !isdigit(date[6]) || !isdigit(date[7]) || !isdigit(date[8]) || !isdigit(date[9]) || date[2] != '/' || date[5] != '/' || date.length() != 10 ) {
         return false;
     }
 
@@ -93,11 +115,30 @@ bool isValidStudentCode(const string code) {
 bool isValidName(string name){
     stringstream ss(name);
     string tmp ;
-    while(ss >> tmp){
-        for(char c : tmp){
-            if(!isalpha(c)){
+    while (ss >> tmp) {
+        for (char c : tmp) {
+            if (!isalpha(c)) {
                 return false;
             }
+        }
+    }
+    return true;
+}
+
+bool isValidDouble(string s){
+    int cnt_dot = 0, cnt_comma = 0;
+    for (char c : s) {
+        if (c == ',') {
+            cnt_comma ++;
+        }
+        else if (c == '.') {
+            cnt_dot ++;
+        }
+        else if(!isdigit(c)){
+            return false;
+        }
+        if (cnt_dot > 1 || cnt_comma > 1 || (cnt_dot && cnt_comma)) {
+            return false;
         }
     }
     return true;
@@ -153,11 +194,11 @@ class Student {
 // Hàm Display_list:
 // Hàm này hiển thị thông tin về danh sách sinh viên hiện tại và các thông tin của từng sinh viên trong danh sách.
 void Display_list(list<Student> LS){
-    if(LS.size() == 0){
+    if (LS.size() == 0) {
         cout <<"The current list does not contain any students !!!!\n";  
     }
     else{
-        if(LS.size() == 1){
+        if (LS.size() == 1) {
             cout <<" The current list contains 1 student.\n";  
         }
         else{
@@ -184,7 +225,7 @@ void Display_highest_grade(list<Student> LS){
     
     for(list<Student>::iterator it = LS.begin(); it != LS.end(); it++){
         double grade = (*it).Get_avg_grade();  
-        if(grade > Tmp_grade){  
+        if (grade > Tmp_grade) {  
             Tmp_grade = grade;  
         }
     }
@@ -192,7 +233,7 @@ void Display_highest_grade(list<Student> LS){
     // Duyệt lại 
     for(list<Student>::iterator it = LS.begin(); it != LS.end(); it++){
         double grade = (*it).Get_avg_grade();  
-        if(grade == Tmp_grade){  
+        if (grade == Tmp_grade) {  
             HLS.push_back((*it)); 
         }
     }
@@ -214,7 +255,7 @@ void Display_lowest_grade(list<Student> LS){
     
     for(list<Student>::iterator it = LS.begin(); it != LS.end(); it++){
         double grade = (*it).Get_avg_grade();  
-        if(grade < Tmp_grade){  
+        if (grade < Tmp_grade) {  
             Tmp_grade = grade;  
         }
     }
@@ -222,7 +263,7 @@ void Display_lowest_grade(list<Student> LS){
     // Duyệt lại 
     for(list<Student>::iterator it = LS.begin(); it != LS.end(); it++){
         double grade = (*it).Get_avg_grade(); 
-        if(grade == Tmp_grade){   
+        if (grade == Tmp_grade) {   
             LLS.push_back((*it));   
         }
     }
@@ -240,7 +281,7 @@ Student Code_search(string S_code, list<Student> LS){
     // Duyệt qua tất cả các sinh viên trong danh sách LS để tìm sinh viên có mã số sinh viên trùng với S_code
     for(list<Student>::iterator it = LS.begin(); it != LS.end(); it++){
         string code = (*it).Get_S_code();  
-        if(S_code == code){  
+        if (S_code == code) {  
             return *it;  // Trả về sinh viên tìm được
         }
     }
@@ -272,7 +313,7 @@ void Add_Student(list<Student> &LS){
             return;
         }
         // Kiểm tra tính hợp lệ của mã số sinh viên
-        if(Code_search(S_code, LS).Get_S_code() == "Null" ){
+        if (Code_search(S_code, LS).Get_S_code() == "Null" ) {
             if (isValidStudentCode(S_code)) {
                 cout << "Student code " << S_code << " is valid." << endl;
                 break; 
@@ -288,7 +329,7 @@ void Add_Student(list<Student> &LS){
     }
 
     // Nhập tên 
-    while(true){
+    while (true) {
         cout << "Full Name       : ";
         getline(cin, Full_name);
         if (Full_name == "q" || Full_name == "exit") {
@@ -296,7 +337,7 @@ void Add_Student(list<Student> &LS){
             return;
         }
         standardize_Name(Full_name);  // Chuẩn hóa tên 
-        if(isValidName(Full_name)){
+        if (isValidName(Full_name)) {
             break;
         }
         else{
@@ -323,12 +364,22 @@ void Add_Student(list<Student> &LS){
 
     // Nhập điểm trung bình
     while (true) {
+        string str_grade = "";
         cout << "Average Grade (0-10) : ";
-        cin >> avg_grade;
+        getline(cin, str_grade);
+        if (str_grade == "q" || str_grade == "exit") {
+            cout << "Cancelling the add student process.\n";
+            return;
+        }
+        if (!isValidDouble(str_grade)) {
+            cout << "Invalid grade. Please enter a number between 0.0 and 10.0 .\n";
+            continue;
+        }
+        avg_grade = strToDouble(str_grade);
         if (avg_grade >= 0 && avg_grade <= 10) {
             break; 
         } else {
-            cout << "Invalid grade. Please enter a grade between 0 and 10.\n";
+            cout << "Invalid grade. Please enter a grade between 0.0 and 10.0 .\n";
         }
     }
 
